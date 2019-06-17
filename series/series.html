@@ -7,19 +7,19 @@
     <title>Show App</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./app.css">
+    <link rel="stylesheet" href="../app.css">
   </head>
-  <body ng-app="movies">
+  <body ng-app="series">
 
     <header>
       <nav class="pr-2 pl-2 pt-1 pb-1 row justify-content-between align-items">
         <div>
-          <img class="logo" src="./img/logoApp.png" alt="logo">
+          <img class="logo" src="../img/logoApp.png" alt="logo">
         </div>
         
         <ul class="nav-ul">
-          <li><a href="" class="active fz22">Movies</a></li>
-          <li><a href="./series/series.html" class="fz22">Series</a></li>
+          <li><a href="../index.html" class="fz22">Movies</a></li>
+          <li><a href="#" class="active fz22">Series</a></li>
           <li><a href="#" class="fz22">Favoritos</a></li>
         </ul>
       </nav>  
@@ -49,7 +49,7 @@
           
           <div class="pl-3 color1 font-theme">
             <label for="" class="label-select pb-1">Género</label>
-            <select name="" id="" placeholder="Filtrar por..." ng-model="selectedGenero" ng-controller="generoController">
+            <select name="" id="" placeholder="Filtrar por..." ng-model="selectedGenero" ng-controller="generoControllertv">
               <option value="{{ genero.id }}" ng-repeat="genero in generos">{{ genero.name }}</option>
             </select>
           </div>         
@@ -64,7 +64,7 @@
             <div class="article-content pr-1 pt-1 pl-2 pb-1">
 
               <header class="row justify-content-between mb-2 fz18 color1">
-                <h4 style="width: 90%; min-height: 24px;" class="m-0 pr-1">{{ movie.title }}</h4>
+                <h4 style="width: 90%; min-height: 24px;" class="m-0 pr-1">{{ movie.name }}</h4>
                 <span style="width: 10%">{{ movie.vote_average }}</span>
               </header>
 
@@ -84,21 +84,7 @@
                 <span class="color1">Agregar a favoritos <i class="fas fa-heart"></i></span>
               </div>
             </div>
-          </article>
-
-          
-
-          
-          <!-- <div class="btn-group">
-            <label class="btn btn-primary" ng-click="setItems(5)">5</label>
-          </div> -->
-          
-
-
-
-
-
-
+          </article>     
 
         </div>
       </section>
@@ -112,6 +98,6 @@
     <div class="modal-backdrop hide"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="./app.js"></script>
+    <script src="./series.js"></script>
   </body>
 </html>

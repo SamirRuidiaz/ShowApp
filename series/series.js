@@ -4,11 +4,11 @@ var api_key = "f0c595e13a64b16fbf5318fbe6872351";
 var url_base = "https://api.themoviedb.org/3"
 var idioma = "language=es-CO";
 
-angular.module("movies", [])
+angular.module("series", [])
 .controller("AppController", function($scope, $http) {
    $http({
       method : "GET",
-      url : url_base+"/movie/popular?api_key="+api_key+"&"+idioma+"&page=1"
+      url : url_base+"/tv/popular?api_key="+api_key+"&"+idioma+"&page=1"
    }).then(function(response) {
         $scope.movies = response.data.results;
 
@@ -45,10 +45,10 @@ angular.module("movies", [])
       $scope.anhos = response.statusText;
    });
 })
-.controller("generoController", function($scope, $http) {
+.controller("generoControllertv", function($scope, $http) {
    $http({
       method : "GET",
-      url : url_base+"/genre/movie/list?api_key="+api_key+"&"+idioma
+      url : url_base+"/genre/tv/list?api_key="+api_key+"&"+idioma
    }).then(function(response) {
       $scope.generos = response.data.genres;
    }, function myError(response) {
