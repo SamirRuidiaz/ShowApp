@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Show App</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="./app.css">
+  </head>
+  <body>
+
+    <header>
+      <nav class="pr-2 pl-2 row justify-content-between align-items">
+        <div>
+          <img class="logo" src="./img/logoApp.png" alt="logo">
+        </div>
+        
+        <ul class="nav-ul">
+          <li><a href="#" class="active fz22">Movies</a></li>
+          <li><a href="#" class="fz22">Series</a></li>
+          <li><a href="#" class="fz22">Favoritos</a></li>
+        </ul>
+      </nav>  
+
+      <div class="search-content">
+        <form class="row justify-content-start align-items color2 pr-3">
+          <i class="fas fa-search fz20 pr-2"></i>
+          <input class="form-control fz20 color2" ng-model="search" type="text" placeholder="Search for a movie, series and videos">
+        </form>
+      </div>
+    </header>
+
+    
+    
+    <!-- Begin page content -->
+    <main>
+      <section ng-app="movies">
+        <h4 class="pl-3 pt-1 pb-2 mt-3 fz22 color1 font-theme" style="font-weight: 400;">Descubra nuevas películas y programas de televisión</h4>
+
+        <div class="row-wrap">
+          <div class="pl-3 pr-3 color1 font-theme">
+            <label for="" class="label-select pb-1">Año</label>
+            <select name="" id="" ng-controller="anhoController">
+              <option value="{{ anho.id }}" ng-repeat="anho in anhos">{{ anho.address }}</option>
+            </select>
+          </div>
+          
+          <div class="pl-3 color1 font-theme">
+            <label for="" class="label-select pb-1">Género</label>
+            <select name="" id="" placeholder="Filtrar por..." ng-model="selectedGenero" ng-controller="generoController">
+              <option value="{{ genero.id }}" ng-repeat="genero in generos">{{ genero.name }}</option>
+            </select>
+          </div>         
+        </div>
+
+
+        <div class="box-article p-3 row-wrap justify-content-between" ng-controller="AppController">
+          <article class="mb-2 row font-theme" ng-repeat="movie in movies">
+            <div class="article-img">
+              <img src="./img/logoApp.png" alt="">
+            </div>
+            <div class="article-content pr-1 pt-1 pl-2 pb-1">
+
+              <header class="row-wrap justify-content-between mb-2 fz22 color1">
+                <h4 class="m-0">{{ movie.name }}</h4>
+                <span>7.5</span>
+              </header>
+
+              <p class="row justify-content-between fz14 mb-2 color2">
+                <span>2h 16min </span>
+                <span>|</span>
+                <span>5 May 2017 (USA) </span>
+                <span>|</span>
+                <span>Acción y Aventura</span>
+              </p>
+              <p class="description mb-2 color1">
+                  Cuando los héroes por sí solos no son
+                  suficientes. El mundo necesita leyendas.
+                  Después de haber visto el futuro…
+              </p>
+
+              <div class="row justify-content-between align-items">
+                <button class="btn">Ver Trailer</button>
+                <span class="color1">Agregar a favoritos <i class="fas fa-heart"></i></span>
+              </div>
+            </div>
+          </article>
+
+          
+
+          <div total-items="total" items-per-page="itemPerPage"    ng-model="currentPage" ng-change="pageChanged()"></div>    
+        <!-- To specify your choice of items Per Pages-->
+     <div class="btn-group">
+                <label class="btn btn-primary" ng-model="radioModel"  btn-radio="'Left'" data-ng-click="setItems(5)">5</label>
+                <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Middle'" data-ng-click="setItems(10)">10</label>
+                <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'" data-ng-click="setItems(15)">15</label>
+            </div>
+     <!-- //And don't forget in your table: -->
+      <tr data-ng-repeat="p in profiles | offset: (currentPage-1)*itemPerPage | limitTo: itemPerPage" >
+
+
+
+
+
+
+        </div>
+      </section>
+    </main>
+
+
+
+    <div class="modal-dialog hide">
+      <h2>modal</h2>
+    </div>
+    <div class="modal-backdrop hide"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
