@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="../app.css">
   </head>
-  <body ng-app="series">
+  <body ng-app="series" ng-controller="seriesController">
 
     <header>
-      <nav class="pr-2 pl-2 pt-1 pb-1 row justify-content-between align-items">
+      <nav class="pr-2 pl-2 pt-1 pb-1 row-wrap justify-content-between align-items">
         <div>
           <img class="logo" src="../img/logoApp.png" alt="logo">
         </div>
@@ -25,7 +25,7 @@
       </nav>  
 
       <div class="search-content">
-        <form class="row justify-content-start align-items color2 pr-3">
+        <form class="row justify-content-start align-items color2 pr-3" ng-submit="submitSeries()">
           <i class="fas fa-search fz20 pr-2 color1"></i>
           <input class="form-control fz20 color2" ng-model="search" type="text" placeholder="Search for a movie, series and videos">
         </form>
@@ -42,41 +42,40 @@
         <div class="row-wrap">
           <div class="pl-3 pr-3 color1 font-theme">
             <label for="" class="label-select pb-1">Año</label>
-            <select name="" id="" ng-controller="anhoController">
-              <option value="{{ anho.id }}" ng-repeat="anho in anhos">{{ anho.address }}</option>
+            <select ng-model="selectedanhio" ng-change="searchanhio()">
+              <option value="{{ anho.id }}" ng-repeat="anho in anhos">{{ anho.id }}</option>
             </select>
           </div>
           
           <div class="pl-3 color1 font-theme">
             <label for="" class="label-select pb-1">Género</label>
-            <select name="" id="" placeholder="Filtrar por..." ng-model="selectedGenero" ng-controller="generoControllertv">
+            <select placeholder="Filtrar por..." ng-model="selectedGenero" ng-change="searchGenero()">
               <option value="{{ genero.id }}" ng-repeat="genero in generos">{{ genero.name }}</option>
             </select>
           </div>         
         </div>
 
-
-        <div class="box-article p-3 row-wrap justify-content-between" ng-controller="AppController">
-          <article class="mb-2 row font-theme" ng-repeat="movie in movies">
+        <div class="box-article p-3 row-wrap justify-content-between">
+          <article class="mb-2 row font-theme" ng-repeat="serie in series">
             <div class="article-img">
-              <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="img_movie">
+              <img src="https://image.tmdb.org/t/p/original/{{ serie.poster_path }}" alt="img_movie">
             </div>
             <div class="article-content pr-1 pt-1 pl-2 pb-1">
 
               <header class="row justify-content-between mb-2 fz18 color1">
-                <h4 style="width: 90%; min-height: 24px;" class="m-0 pr-1">{{ movie.name }}</h4>
-                <span style="width: 10%">{{ movie.vote_average }}</span>
+                <h4 style="width: 90%; min-height: 24px;" class="m-0 pr-1">{{ serie.name }}</h4>
+                <span style="width: 10%">{{ serie.vote_average }}</span>
               </header>
 
               <p class="row justify-content-between fz14 mb-2 color2">
                 <span>2h 16min </span>
                 <span>|</span>
-                <span> {{ movie.release_date }} </span>
+                <span> {{ serie.first_air_date }} </span>
                 <span>|</span>
                 <span>Acción y Aventura</span>
               </p>
               <p class="description mb-2 color1">
-                  {{ movie.overview }}
+                  {{ serie.overview }}
               </p>
 
               <div class="row justify-content-between align-items">
