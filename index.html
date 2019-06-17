@@ -90,15 +90,19 @@
 
           
 
-          <div total-items="total" items-per-page="itemPerPage"    ng-model="currentPage" ng-change="pageChanged()"></div>    
-        <!-- To specify your choice of items Per Pages-->
-     <div class="btn-group">
-                <label class="btn btn-primary" ng-model="radioModel"  btn-radio="'Left'" data-ng-click="setItems(5)">5</label>
-                <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Middle'" data-ng-click="setItems(10)">10</label>
-                <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'" data-ng-click="setItems(15)">15</label>
-            </div>
-     <!-- //And don't forget in your table: -->
-      <tr data-ng-repeat="p in profiles | offset: (currentPage-1)*itemPerPage | limitTo: itemPerPage" >
+          <div 
+            total-items="total" 
+            items-per-page="itemPerPage"  
+            ng-model="currentPage" 
+            ng-change="pageChanged()"></div>    
+          <!-- To specify your choice of items Per Pages-->
+          <div class="btn-group">
+              <label class="btn btn-primary" ng-model="radioModel"  btn-radio="'Left'" click="setItems(5)">5</label>
+              <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Middle'" click="setItems(10)">10</label>
+              <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'" click="setItems(15)">15</label>
+          </div>
+          
+          
 
 
 
